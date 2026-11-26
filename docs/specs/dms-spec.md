@@ -60,6 +60,11 @@ Entregar um sistema web que permita enviar, listar e baixar documentos, com gest
 
 Prefixo no frontend: `/api` (proxy Vite). Identificação do usuário por header `X-User-Id` (obrigatório).
 
+No backend, `PORT` define a porta (padrão `3000`) e `MAX_UPLOAD_SIZE` define o
+limite por arquivo em bytes (padrão `10485760`, ou 10 MiB). Os metadados são
+perdidos quando o processo é reiniciado; os arquivos permanecem no disco. O
+header identifica o usuário, mas não substitui autenticação.
+
 ### POST /upload
 
 - Entrada: `multipart/form-data`, campo `file`
