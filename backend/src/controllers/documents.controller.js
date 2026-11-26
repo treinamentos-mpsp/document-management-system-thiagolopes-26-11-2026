@@ -16,7 +16,12 @@ function upload(req, res) {
   if (!req.file) {
     return res.status(400).json({ error: 'Envie um arquivo no campo file.' });
   }
-  const document = service.createDocument(req.file, req.owner);
+  const document = service.createDocument({
+    originalName: req.file.originalname,
+    storedName: req.file.filename,
+    mimeType: req.file.mimetype,
+    size: req.file.size,
+  }, req.owner);
   res.status(201).json(document);
 }
 

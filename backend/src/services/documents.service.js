@@ -1,13 +1,13 @@
 const { randomUUID } = require('node:crypto');
 const repository = require('../repositories/documents.repository');
 
-function createDocument(file, owner) {
+function createDocument(fileMetadata, owner) {
   return repository.save({
     id: randomUUID(),
-    originalName: file.originalname,
-    storedName: file.filename,
-    mimeType: file.mimetype,
-    size: file.size,
+    originalName: fileMetadata.originalName,
+    storedName: fileMetadata.storedName,
+    mimeType: fileMetadata.mimeType,
+    size: fileMetadata.size,
     uploadedAt: new Date().toISOString(),
     owner,
   });
